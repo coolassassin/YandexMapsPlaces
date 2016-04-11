@@ -2,8 +2,22 @@
 <head>
 	<title>Yandex Maps</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<!-- jQuery -->
+	<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+	<script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	
+	<!-- Bootstrap -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	
+	<script src="https://api-maps.yandex.ru/2.0-stable/?load=package.standard&lang=ru-RU" type="text/javascript"> </script>
 	<script type="text/javascript" src="bundle.js"></script>
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
 <body>
-	
+	<div id="map" style="width:100%; height:500px;"></div>
+	<button type="button" class="btn btn-warning" id="destroyButton"/>Удалить карту</button>
+	<button type="button" class="btn btn-success hide" id="loadButton"/>Загрузить карту</button>
 </body>
