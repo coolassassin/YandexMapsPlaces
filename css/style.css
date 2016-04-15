@@ -2,6 +2,7 @@ body {
     background: #fff;
 	height: 100%;
 	margin: 0px;
+	font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 div#map {
@@ -13,12 +14,60 @@ div#map {
 
 #destroyButton {
 	position: fixed;
-	right: 10px;
-	top: 10px;
+	left: 10px;
+	bottom: 40px;
 }
 
 #loadButton {
 	position: fixed;
 	left: 10px;
 	top: 10px;
+}
+
+#fill_info_form {
+	z-index: 10;
+	position: fixed;
+	width: 500px;
+}
+
+#fill_info_form .header {
+	cursor: move;
+}
+
+.form-group-margin {
+    margin-bottom: 15px;
+}
+
+.message_box {
+	height: 100px;
+	overflow: auto;
+}
+
+.message_box:empty::after {
+	content: "Отзывы отсутствуют";
+	font-style: italic;
+}
+
+textarea {
+	width: 100%;
+	min-width: 100%;
+}
+
+#fill_info_form .header .title {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	display: inline-block;
+	max-width: calc(100% - 25px);
+	font-size: 13px;
+	height: 17px;
+	margin-bottom: -2px;
+}
+
+.place-description {
+	font-style: italic;
+}
+
+.ballon_body {
+	height:100px;
 }
