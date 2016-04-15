@@ -89,7 +89,7 @@
 
 
 	// module
-	exports.push([module.id, "body {\r\n    background: #fff;\r\n\theight: 100%;\r\n\tmargin: 0px;\r\n\tfont-family: \"Open Sans\",\"Helvetica Neue\",Helvetica,Arial,sans-serif;\r\n}\r\n\r\ndiv#map {\r\n\theight: 100% !important;\r\n\tbottom: 0px;\r\n\tposition: absolute;\r\n\toverflow: hidden;\r\n}\r\n\r\n#destroyButton {\r\n\tposition: fixed;\r\n\tleft: 10px;\r\n\tbottom: 40px;\r\n}\r\n\r\n#loadButton {\r\n\tposition: fixed;\r\n\tleft: 10px;\r\n\ttop: 10px;\r\n}\r\n\r\n#fill_info_form {\r\n\tz-index: 10;\r\n\tposition: fixed;\r\n\twidth: 500px;\r\n}\r\n\r\n#fill_info_form .header {\r\n\tcursor: move;\r\n}\r\n\r\n.form-group-margin {\r\n    margin-bottom: 15px;\r\n}\r\n\r\n.message_box {\r\n\theight: 100px;\r\n\toverflow: auto;\r\n}\r\n\r\n.message_box:empty::after {\r\n\tcontent: \"\\41E\\442\\437\\44B\\432\\44B   \\43E\\442\\441\\443\\442\\441\\442\\432\\443\\44E\\442\";\r\n\tfont-style: italic;\r\n}\r\n\r\ntextarea {\r\n\twidth: 100%;\r\n\tmin-width: 100%;\r\n}\r\n\r\n#fill_info_form .header .title {\r\n\toverflow: hidden;\r\n\twhite-space: nowrap;\r\n\ttext-overflow: ellipsis;\r\n\tdisplay: inline-block;\r\n\tmax-width: calc(100% - 25px);\r\n\tfont-size: 13px;\r\n\theight: 17px;\r\n\tmargin-bottom: -2px;\r\n}\r\n\r\n.place-description {\r\n\tfont-style: italic;\r\n}\r\n\r\n.ballon_body {\r\n\theight:100px;\r\n}", ""]);
+	exports.push([module.id, "body {\r\n    background: #fff;\r\n\theight: 100%;\r\n\tmargin: 0px;\r\n\tfont-family: \"Open Sans\",\"Helvetica Neue\",Helvetica,Arial,sans-serif;\r\n}\r\n\r\ndiv#map {\r\n\theight: 100% !important;\r\n\tbottom: 0px;\r\n\tposition: absolute;\r\n\toverflow: hidden;\r\n}\r\n\r\n#destroyButton {\r\n\tposition: fixed;\r\n\tleft: 10px;\r\n\tbottom: 40px;\r\n}\r\n\r\n#loadButton {\r\n\tposition: fixed;\r\n\tleft: 10px;\r\n\ttop: 10px;\r\n}\r\n\r\n#fill_info_form {\r\n\tz-index: 10;\r\n\tposition: fixed;\r\n\twidth: 500px;\r\n}\r\n\r\n#fill_info_form .header {\r\n\tcursor: move;\r\n}\r\n\r\n.form-group-margin {\r\n    margin-bottom: 15px;\r\n}\r\n\r\n.message_box {\r\n\theight: 100px;\r\n\toverflow: auto;\r\n}\r\n\r\n.message_box:empty::after {\r\n\tcontent: \"\\41E\\442\\437\\44B\\432\\44B   \\43E\\442\\441\\443\\442\\441\\442\\432\\443\\44E\\442\";\r\n\tfont-style: italic;\r\n}\r\n\r\ntextarea {\r\n\twidth: 100%;\r\n\tmin-width: 100%;\r\n}\r\n\r\n#fill_info_form .header .title {\r\n\toverflow: hidden;\r\n\twhite-space: nowrap;\r\n\ttext-overflow: ellipsis;\r\n\tdisplay: inline-block;\r\n\tmax-width: calc(100% - 25px);\r\n\tfont-size: 13px;\r\n\theight: 17px;\r\n\tmargin-bottom: -2px;\r\n}\r\n\r\n.place-description {\r\n\tfont-style: italic;\r\n}\r\n\r\n.ballon_body {\r\n\theight:100px;\r\n}\r\n\r\n.notification_list {\r\n\tposition: absolute;\r\n\tright: 10px;\r\n\ttop: 10px;\r\n\tz-index: 1000;\r\n}\r\n\r\n.notification {\r\n\tbackground: #ccc;\r\n\tpadding: 10px 20px;\r\n\ttext-align: left;\r\n\twidth: 250px;\r\n\tborder-radius: 5px;\r\n\tcolor: #fff;\r\n\topacity: 0;\r\n\t-webkit-animation: fade  5s 1 ease-in-out;\r\n\tanimation: fade  5s 1 ease-in-out;\r\n}\r\n\r\n.notification.success {\r\n   background: #5ebd5e;\r\n}\r\n\r\n.notification.error {\r\n   background: #f4b04f;\r\n}\r\n\r\n.notification + .notification {\r\n\tmargin-top: 15px;\r\n}\r\n\r\n\r\n@-webkit-keyframes fade {\r\n\tfrom {opacity: 0;}\r\n\t10% {opacity: 1;}\r\n\t90% {opacity: 1;}\r\n\tto {opacity: 0;}\r\n}\r\n@keyframes fade {\r\n\tfrom {opacity: 0;}\r\n\t10% {opacity: 1;}\r\n\t90% {opacity: 1;}\r\n\tto {opacity: 0;}\r\n}", ""]);
 
 	// exports
 
@@ -416,7 +416,6 @@
 		ymaps.ready(init);
 
 		function init () { // init yandex map function
-			console.log('Загрузилась карта');
 			
 			// function decalration
 			function loadMap() {
@@ -427,18 +426,41 @@
 				});
 				
 				YaPromise.then(function(output){
-					var coords = output.coords; // Geting coordinates
-					
-					// Map initializing
-					myMap = new ymaps.Map('map', {
-						center:[coords.latitude, coords.longitude],
-						zoom:15,
-						behaviors:['default', 'scrollZoom']
+					return new Promise (function (resolve) {
+						var coords = output.coords; // Geting coordinates
+						
+						// Map initializing
+						myMap = new ymaps.Map('map', {
+							center:[coords.latitude, coords.longitude],
+							zoom:15,
+							behaviors:['default', 'scrollZoom']
+						});
+						
+						destroyBut.classList.remove('hide');
+						resolve();
 					});
-					
-					destroyBut.classList.remove('hide');
-					
-					console.log('Ваши координаты: %f, %f', coords.latitude, coords.longitude);
+				}).then(function (){ // Get all marksInfo
+					return new Promise (function (resolve) {
+						var xhr = new XMLHttpRequest(),
+							json = JSON.stringify({op: "all"});
+
+						xhr.open("POST", "http://localhost:3000/");
+
+						xhr.onreadystatechange = function(e){
+							if (xhr.readyState == 4) {
+								var resultObj = JSON.parse(xhr.responseText);
+								for (var adr in resultObj) {
+									markArray.push({
+										address: adr,
+										marks: resultObj[adr]
+									});
+								}
+								resolve();
+							}
+						};
+
+						xhr.send(json);
+					});
 				}).then(function(e){
 					var customItemContentLayout = ymaps.templateLayoutFactory.createClass(
 						// Флаг "raw" означает, что данные вставляют "как есть" без экранирования html.
@@ -459,6 +481,11 @@
 					});
 					
 					myMap.geoObjects.add(mapClusterer); // Add claster to map
+					
+					// fill cluster
+					markArray.forEach(function(obj, ind){
+						obj.marks.forEach(t => createMark(t, ind));
+					});
 					
 					// Set events
 					myMap.events.add('click', function (e) {
@@ -527,56 +554,57 @@
 					name: formValues[0],
 					place: formValues[1],
 					text: formValues[2],
-					date: getCurrentTime()
+					date: getTime()
 				};
 				
 				sendMark(newMark,function(e){
-					var result = JSON.parse(e);
-					if (result.error) {
-						console.error(result.error.message);
-						return false;
-					}
 					markArray[pasteIndex].marks.push(newMark);
-					
-					var myPlacemark = new ymaps.Placemark(currentPosition.pos, { // create new mark
-						iconContent: '1',
-						balloonContentHeader: newMark.name,
-						balloonContentBody: '<div><a href="javascript:void(0);" class="address_link" data-index="'+ pasteIndex +'">' + newMark.address + '</a></div><div>' + newMark.text + '</div>',
-						balloonContentFooter: newMark.date,
-						hintContent: 'Стандартный значок метки'
-					}, 
-					{
-						preset: 'twirl#violetIcon'
-					});
-					
-					mapClusterer.add(myPlacemark); // Fill claster
-					
+					createMark(newMark,pasteIndex);
 					renderPlaceList(currentPosition.address);
+					formInputs.forEach(t => t.value = '');
 				});
-				
-				formInputs.forEach(t => t.value = '');
 			}
 			
 			function openFormByIndex (index,pos) {
 				var currentAddress = markArray[index];
-				console.log(index,currentAddress);
 				currentPosition = {pos: [currentAddress.marks[0].coords.x,currentAddress.marks[0].coords.y], address: currentAddress.address};
 				editFormTitle.innerHTML = currentPosition.address;
 				editForm.classList.remove('hide');
 				setElementPosition(editForm,pos[0] || 0,pos[1] || 0);
+				renderPlaceList(currentPosition.address);
 			}
 			
-			function getCurrentTime () {
+			function createMark (mark,pasteIndex) {
+				var myPlacemark = new ymaps.Placemark([mark.coords.x,mark.coords.y], { // create new mark
+					iconContent: '1',
+					balloonContentHeader: mark.name,
+					balloonContentBody: '<div><a href="javascript:void(0);" class="address_link" data-index="'+ pasteIndex +'">' + mark.address + '</a></div><div>' + mark.text + '</div>',
+					balloonContentFooter: prepareDate(mark.date),
+					hintContent: 'Стандартный значок метки'
+				}, 
+				{
+					preset: 'twirl#violetIcon'
+				});
+				
+				mapClusterer.add(myPlacemark); // Fill claster
+			}
+			
+			function getTime (date) {
+				console.log(date);
 				function doubleNumber (num) {
 					return num < 10 ? '0' + num : num;
 				}
-				var now = new Date();
+				var now = date ? new Date(date) : new Date();
 				return  now.getFullYear() + '.' + 
 						doubleNumber(now.getMonth()) + '.' + 
 						doubleNumber(now.getDate()) + ' ' + 
 						doubleNumber(now.getHours()) + ':' +
 						doubleNumber(now.getMinutes()) + ':' +
 						doubleNumber(now.getSeconds());
+			}
+			
+			function prepareDate (date) {
+				return (date.length == parseInt(date).toString().length || typeof date == 'number' ? getTime(parseInt(date)) : date);
 			}
 			
 			function sendMark (obj, callback) {
@@ -589,7 +617,13 @@
 				xhr.onreadystatechange = function(e){
 					if (xhr.readyState == 4) {
 						if (typeof callback == 'function') {
-							callback(xhr.responseText);
+							var result = JSON.parse(xhr.responseText);
+							if (result.error) {
+								console.error(result.error.message);
+								addNotification('error', result.error.message);
+								return false;
+							}
+							callback(result);
 						}
 					}
 				};
@@ -603,13 +637,23 @@
 					findIndex = markArray.findIndex(t => t.address == currentPosition.address);
 				}
 				if (findIndex != null && findIndex != -1) {
-					messageBox.innerHTML = markArray[findIndex].marks.map( t => renderListObject (t) ).join('');
+					messageBox.innerHTML = markArray[findIndex].marks.map( t => renderListObject (t) ).reverse().join('');
 				}
 			}
 			
 			function renderListObject (obj) {
 				return '<div class="form-group-margin">'+
-						'<div><strong>'+ obj.name + '</strong> ' + obj.place + ' <span class="pull-right">' + obj.date + '</span></div><div class="place-description">' + obj.text + '</div>';
+						'<div><strong>'+ obj.name + '</strong> ' + obj.place + ' <span class="pull-right">' + prepareDate(obj.date) + '</span></div><div class="place-description">' + obj.text + '</div>';
+			}
+			
+			function addNotification (type, text) {
+				var new_notification = document.createElement('DIV');
+				new_notification.innerHTML = text;
+				new_notification.setAttribute('class','notification' + (type == 'error' ? ' error' : ' success'));
+				document.getElementsByClassName('notification_list')[0].appendChild(new_notification);
+				setTimeout(function(){
+					new_notification.remove();
+				},5000);
 			}
 			
 			// variables
@@ -634,6 +678,7 @@
 				myMap.destroy();
 				this.classList.add('hide');
 				loadBut.classList.remove('hide');
+				markArray = [];
 			});
 			
 			loadBut.addEventListener('click',function () { // load map by click
@@ -678,7 +723,6 @@
 			document.addEventListener('click',function(e){
 				if (e.target.classList.contains('address_link')){
 					var baloon = e.target.closest('.ymaps-2-1-38-balloon-overlay');
-					console.log(baloon);
 					openFormByIndex(e.target.getAttribute('data-index'), [baloon.offsetLeft, baloon.offsetTop + baloon.offsetHeight + 10]);
 				}
 			});

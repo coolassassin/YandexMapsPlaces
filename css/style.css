@@ -71,3 +71,48 @@ textarea {
 .ballon_body {
 	height:100px;
 }
+
+.notification_list {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	z-index: 1000;
+}
+
+.notification {
+	background: #ccc;
+	padding: 10px 20px;
+	text-align: left;
+	width: 250px;
+	border-radius: 5px;
+	color: #fff;
+	opacity: 0;
+	-webkit-animation: fade  5s 1 ease-in-out;
+	animation: fade  5s 1 ease-in-out;
+}
+
+.notification.success {
+   background: #5ebd5e;
+}
+
+.notification.error {
+   background: #f4b04f;
+}
+
+.notification + .notification {
+	margin-top: 15px;
+}
+
+
+@-webkit-keyframes fade {
+	from {opacity: 0;}
+	10% {opacity: 1;}
+	90% {opacity: 1;}
+	to {opacity: 0;}
+}
+@keyframes fade {
+	from {opacity: 0;}
+	10% {opacity: 1;}
+	90% {opacity: 1;}
+	to {opacity: 0;}
+}
