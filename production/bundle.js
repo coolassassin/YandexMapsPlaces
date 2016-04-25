@@ -691,7 +691,7 @@
 				editForm.classList.add('hide');
 			});
 			
-			addNewMarkBut.addEventListener('click',function () { // close edit form
+			addNewMarkBut.addEventListener('click',function () { // save in edit form
 				setNewMark();
 			});
 			
@@ -721,8 +721,24 @@
 			});
 			
 			document.addEventListener('click',function(e){
+				function getMultipleParent(node,deep) {
+					try {
+						if (deep == 1) {
+							return node
+						}
+						return getMultipleParent(node.parentNode,deep - 1);
+					} catch (e) {
+						return node;
+					}
+				}
 				if (e.target.classList.contains('address_link')){
-					var baloon = e.target.closest('.ymaps-2-1-38-balloon-overlay');
+					var baloon = e.target.closest('.ballon_body');
+					if (baloon) {
+						baloon = getMultipleParent(baloon,14);
+					} else {
+						baloon = getMultipleParent(e.target.closest('div'),8);
+					}
+					console.log(baloon);
 					openFormByIndex(e.target.getAttribute('data-index'), [baloon.offsetLeft, baloon.offsetTop + baloon.offsetHeight + 10]);
 				}
 			});
